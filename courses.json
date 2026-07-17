@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Python Programming",
+    "level": "Beginner",
+    "prerequisite": "None",
+    "description": "Learn Python fundamentals."
+  },
+  {
+    "name": "Data Structures & Algorithms",
+    "level": "Intermediate",
+    "prerequisite": "Python Programming",
+    "description": "Master DSA for coding interviews."
+  },
+  {
+    "name": "Machine Learning",
+    "level": "Intermediate",
+    "prerequisite": "Python Programming",
+    "description": "Learn supervised and unsupervised learning."
+  },
+  {
+    "name": "Deep Learning",
+    "level": "Advanced",
+    "prerequisite": "Machine Learning",
+    "description": "Neural networks using TensorFlow/PyTorch."
+  },
+  {
+    "name": "Computer Vision",
+    "level": "Advanced",
+    "prerequisite": "Deep Learning",
+    "description": "Image processing and object detection."
+  }
+]
