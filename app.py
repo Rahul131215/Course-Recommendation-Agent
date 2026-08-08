@@ -1,31 +1,32 @@
 import streamlit as st
 from recommender import recommend_courses
 
-# ---------- PAGE CONFIG ----------
+# ---------------- PAGE CONFIG ----------------
 st.set_page_config(
     page_title="AI Course Recommendation Agent",
     page_icon="🎓",
     layout="wide"
 )
 
-# ---------- CUSTOM CSS ----------
+# ---------------- CUSTOM CSS ----------------
 st.markdown("""
 <style>
 .main {
     background-color: #f5f7fa;
 }
 
+/* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #0b5394, #6fa8dc);
-    padding: 40px;
-    border-radius: 20px;
+    background: linear-gradient(135deg, #0b5394, #3d85c6);
+    padding: 45px;
+    border-radius: 25px;
     color: white;
     text-align: center;
     margin-bottom: 30px;
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 50px;
     margin-bottom: 10px;
 }
 
@@ -34,118 +35,128 @@ st.markdown("""
     opacity: 0.95;
 }
 
+/* Glass Card */
 .card {
     background: white;
     padding: 25px;
-    border-radius: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     margin-bottom: 20px;
 }
 
+/* Feature Cards */
 .feature {
-    background: #ffffff;
+    background: linear-gradient(145deg, #ffffff, #f0f4ff);
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 18px;
     text-align: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     height: 100%;
 }
 
+.feature h3 {
+    color: #0b5394;
+}
+
+/* Footer */
 .footer {
     text-align: center;
     color: gray;
-    margin-top: 40px;
     padding: 20px;
+    margin-top: 40px;
 }
 
+/* Button Styling */
 div.stButton > button {
     background: linear-gradient(90deg, #0b5394, #3d85c6);
     color: white;
     font-size: 18px;
-    border-radius: 12px;
-    padding: 12px 24px;
+    border-radius: 14px;
+    padding: 12px 20px;
     border: none;
     width: 100%;
+    transition: 0.3s ease;
 }
 
 div.stButton > button:hover {
+    transform: translateY(-2px);
     background: linear-gradient(90deg, #073763, #0b5394);
     color: white;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# ---------- HERO SECTION ----------
+# ---------------- HERO SECTION ----------------
 st.markdown("""
 <div class="hero">
     <h1>🎓 AI Course Recommendation Agent</h1>
-    <p>An intelligent AI mentor that transforms your background, skills, and career goal into a personalized learning roadmap.</p>
+    <p>Transform your background, skills, and career goals into a personalized AI-powered learning roadmap.</p>
 </div>
 """, unsafe_allow_html=True)
 
-# ---------- SIDEBAR ----------
+# ---------------- SIDEBAR ----------------
 with st.sidebar:
-    st.header("📌 Project Information")
-
+    st.header("📌 About Project")
     st.success("Built by Rahul Biradar 🚀")
 
-    st.markdown("### 🛠️ Technologies")
+    st.markdown("### 🛠️ Tech Stack")
     st.write("• Python")
     st.write("• Streamlit")
     st.write("• Groq API")
     st.write("• Llama 3.3")
     st.write("• JSON")
+    st.write("• GitHub")
 
-    st.markdown("### 💡 AI Tips")
-    st.info("Enter at least **2–3 skills** for better recommendations.")
+    st.markdown("### 💡 Tips")
+    st.info("Enter **2–5 skills** for better AI recommendations.")
 
-# ---------- FEATURE CARDS ----------
-st.subheader("✨ What This AI Agent Can Do")
+# ---------------- FEATURE SECTION ----------------
+st.subheader("✨ What This AI Agent Does")
 
-f1, f2, f3 = st.columns(3)
+c1, c2, c3 = st.columns(3)
 
-with f1:
+with c1:
     st.markdown("""
     <div class="feature">
         <h3>🎯 Personalized</h3>
-        <p>Recommendations based on your unique profile.</p>
+        <p>Recommendations based on your unique background and goals.</p>
     </div>
     """, unsafe_allow_html=True)
 
-with f2:
+with c2:
     st.markdown("""
     <div class="feature">
         <h3>⚡ Instant AI Analysis</h3>
-        <p>Get your learning roadmap within seconds.</p>
+        <p>AI analyzes your profile and creates a roadmap within seconds.</p>
     </div>
     """, unsafe_allow_html=True)
 
-with f3:
+with c3:
     st.markdown("""
     <div class="feature">
-        <h3>📚 Step-by-Step Roadmap</h3>
-        <p>Clear ordered learning path with explanations.</p>
+        <h3>📚 Structured Learning</h3>
+        <p>Step-by-step learning path with clear explanations and career benefits.</p>
     </div>
     """, unsafe_allow_html=True)
 
 st.write("")
 
-# ---------- WORKFLOW ----------
+# ---------------- WORKFLOW ----------------
 st.subheader("🔄 How It Works")
 
 w1, w2, w3, w4 = st.columns(4)
 
 w1.metric("Step 1", "Enter Profile")
-w2.metric("Step 2", "AI Analyzes")
+w2.metric("Step 2", "AI Analysis")
 w3.metric("Step 3", "Generate Roadmap")
 w4.metric("Step 4", "Start Learning")
 
 st.write("")
 
-# ---------- INPUT FORM ----------
+# ---------------- INPUT FORM ----------------
 st.markdown('<div class="card">', unsafe_allow_html=True)
 
-st.subheader("📝 Enter Your Details")
+st.subheader("📝 Student Profile")
 
 col1, col2 = st.columns(2)
 
@@ -157,11 +168,11 @@ with col2:
     skills = st.text_input("💻 Current Skills", placeholder="Python, Java, SQL")
     goal = st.text_input("🚀 Career Goal", placeholder="Software Developer / AI Engineer / Data Analyst")
 
-st.progress(25, text="Complete your profile for AI analysis")
+st.progress(30, text="Complete your profile for AI analysis")
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-# ---------- GENERATE BUTTON ----------
+# ---------------- GENERATE BUTTON ----------------
 if st.button("✨ Generate AI Learning Path"):
 
     profile = {
@@ -182,7 +193,7 @@ if st.button("✨ Generate AI Learning Path"):
     st.markdown(result)
     st.markdown('</div>', unsafe_allow_html=True)
 
-# ---------- WHY USE THIS APP ----------
+# ---------------- BENEFITS ----------------
 st.subheader("🌟 Why Use This AI Agent?")
 
 left, right = st.columns(2)
@@ -191,10 +202,10 @@ with left:
     st.markdown("""
     ### ✅ Benefits
     - Saves time in choosing courses
-    - Provides a structured roadmap
-    - Beginner friendly
-    - Accessible from any browser
-    - Personalized guidance for every student
+    - Provides a structured learning roadmap
+    - Helps focus only on relevant skills
+    - Beginner-friendly interface
+    - Accessible from any browser and device
     """)
 
 with right:
@@ -203,11 +214,11 @@ with right:
     - Students
     - Fresh Graduates
     - Career Changers
-    - Self-learners
+    - Self-Learners
     - Training Institutes
     """)
 
-# ---------- FOOTER ----------
+# ---------------- FOOTER ----------------
 st.markdown("""
 <div class="footer">
     Built with ❤️ using <b>Python + Streamlit + Groq Llama 3.3</b><br>
